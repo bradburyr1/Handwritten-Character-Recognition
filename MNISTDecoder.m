@@ -1,6 +1,6 @@
-function [labels images] = MNISTDecoder(labelsFile, ImagesFile)
+[labels images] = MNISTDecoder('MNIST/train-labels-idx1-ubyte.mat', 'MNIST/train-images-idx3-ubyte.mat')
 
-fid = fopen(labelsFile,'r','b');
+fid = fopen('MNIST/train-labels-idx1-ubyte.mat','r','b');
 if (fread(fid, 1, 'int32') ~= 2049), 
   disp('wrong labels file')
   return
@@ -9,7 +9,7 @@ count = fread(fid, 1, 'int32');
 labels = fread(fid, count, 'char');
 fclose(fid);
 
-fid = fopen(ImagesFile,'r','b');
+fid = fopen('MNIST/train-images-idx3-ubyte.mat','r','b');
 if (fread(fid, 1, 'int32') ~= 2051)
   disp('wrong images file')
   return
