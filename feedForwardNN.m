@@ -71,7 +71,7 @@ end
 output = sigmoid((Vin * Mw1) + Vb1);
 output2 = sigmoid((output * Mw2) + Vb2);
 
-%The results of the network are now all 1.0, and now needs to backpropagate. 
+%Now needs to backpropagate
 y = importdata('Experimental files/5.txt');
 
 %Delta of output (delout)
@@ -88,4 +88,4 @@ alpha = .7;
 %VandDelHid Vin and delhidden
 VandDelHid = Vin' * delhidden;
 VandDelHid = VandDelHid * alpha;
-Mw1 = Mw1 + VandDelHid; %Currently doesn't add, not sure why
+Mw1 += VandDelHid; %Currently doesn't add, not sure why
